@@ -5,27 +5,32 @@ import "./../node_modules/bulma/css/bulma.css";
 
 const store = createStore({
     state() {
-        return { counter: 0 };
+        return {
+            pizzaStyle: "foo",
+            doughType: "bar",
+            toppings: ["123", "leo"],
+        };
     },
     mutations: {
-        increment(state, payload) {
-            if ((state.counter < 70) & (payload > 0)) {
-                state.counter = state.counter + payload;
-            }
-            if ((state.counter > -50) & (payload < 0)) {
-                state.counter = state.counter + payload;
-            }
+        choosePizzaStyle(state, payload) {
+            state.pizzaStyle = payload;
+        },
+        chooseDoughType(state, payload) {
+            state.doughType = payload;
+        },
+        chooseToppings(state, payload) {
+            state.toppings = payload;
         },
     },
     getters: {
-        getCounter(state) {
-            return state.counter;
-        },
-        getNormalizedCounter(state, getter) {
-            if (getter.getCounter >= 50) {
-                return 50;
-            }
-            return getter.getCounter;
+        getPizza(state) {
+            return (
+                state.pizzaStyle +
+                " pizza with " +
+                state.doughType +
+                " dough and the following toppings: " +
+                state.toppings
+            );
         },
     },
 });
