@@ -86,7 +86,7 @@
                                 class="dropdown-item"
                                 @click="
                                     (e) => {
-                                        choosePizzaType(e, item);
+                                        chooseDoughType(e, item);
                                         closeDropdowns(e);
                                     }
                                 "
@@ -95,6 +95,29 @@
                             </a>
                         </div>
                     </div>
+                </div>
+
+                <div
+                    v-for="topping in [
+                        'salami',
+                        'cheese',
+                        'extra cheese',
+                        'garlic',
+                        'paprika',
+                    ]"
+                    :key="topping"
+                >
+                    <label class="checkbox">
+                        <input
+                            type="checkbox"
+                            @click="
+                                (e) => {
+                                    toggleTopping(e, topping);
+                                }
+                            "
+                        />
+                        {{ topping }}
+                    </label>
                 </div>
             </section>
 
@@ -128,6 +151,14 @@ export default {
         choosePizzaType: function (e, pizzaType) {
             e.stopPropagation();
             this.$store.commit("choosePizzaStyle", pizzaType);
+        },
+        chooseDoughType: function (e, doughType) {
+            e.stopPropagation();
+            this.$store.commit("chooseDoughType", doughType);
+        },
+        toggleTopping: function (e, topping) {
+            e.stopPropagation();
+            this.$store.commit("toggleTopping", topping);
         },
     },
     computed: {

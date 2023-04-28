@@ -8,7 +8,7 @@ const store = createStore({
         return {
             pizzaStyle: "foo",
             doughType: "bar",
-            toppings: ["123", "leo"],
+            toppings: [],
         };
     },
     mutations: {
@@ -20,6 +20,14 @@ const store = createStore({
         },
         chooseToppings(state, payload) {
             state.toppings = payload;
+        },
+        toggleTopping(state, payload) {
+            let index = state.toppings.indexOf(payload);
+            if (index > -1) {
+                state.toppings.splice(index, 1);
+            } else {
+                state.toppings = [...state.toppings, payload];
+            }
         },
     },
     getters: {
