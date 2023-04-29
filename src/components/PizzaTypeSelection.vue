@@ -1,9 +1,19 @@
 <template>
-    <router-link class="button" to="/"> Go Back </router-link>
-    <router-link v-if="getPizzaStyle !== '-'" class="button" to="/dough">
-        Next Step
-    </router-link>
-    <button v-else class="button" disabled>Next Step</button>
+    <div class="buttons-container">
+        <div class="back-button">
+            <router-link class="button" to="/"> Go Back </router-link>
+        </div>
+        <div class="next-button">
+            <router-link
+                v-if="getPizzaStyle !== '-'"
+                class="button"
+                to="/dough"
+            >
+                Next Step
+            </router-link>
+            <button v-else class="button" disabled>Next Step</button>
+        </div>
+    </div>
 
     <p class="subtitle">
         What kind of <strong>pizza style</strong> do you want?

@@ -1,6 +1,3 @@
-<!-- <script src="https://unpkg.com/vue@3"></script>
-<script src="https://unpkg.com/vue-router@4"></script> -->
-
 <template>
     <!DOCTYPE html>
 
@@ -17,23 +14,20 @@
                 href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
             />
         </head>
-        <body @click="closeDropdown">
+        <body @click="closeDropdown" class="page">
             <section class="section">
                 <div class="container">
                     <h1 class="title">adelphi pizza</h1>
                 </div>
             </section>
 
-            <!-- <p>
-                <router-link to="/dough">Dough</router-link>
-            </p> -->
-            <section>
+            <section class="selection-container">
                 <div class="container">
                     <router-view />
                 </div>
             </section>
 
-            <section>
+            <section class="pizza-container">
                 <div class="container">
                     <pizza-display />
                 </div>
@@ -43,17 +37,40 @@
 </template>
 
 <script>
-// import PizzaTypeSelection from "./components/PizzaTypeSelection.vue";
-// import DoughTypeSelection from "./components/DoughTypeSelection.vue";
-// import ToppingsSelection from "./components/ToppingsSelection.vue";
 import PizzaDisplay from "./components/PizzaDisplay.vue";
 
 export default {
     components: {
-        // PizzaTypeSelection,
-        // DoughTypeSelection,
-        // ToppingsSelection,
         PizzaDisplay,
     },
 };
 </script>
+
+<style>
+.selection-container {
+    min-height: 300px;
+}
+
+.pizza-container {
+    margin-top: 1cm;
+}
+
+h1 {
+    text-align: center;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1cm;
+}
+
+.page {
+    padding-left: 10%;
+    padding-right: 10%;
+    max-width: 20cm;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>

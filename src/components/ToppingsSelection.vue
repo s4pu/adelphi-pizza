@@ -1,9 +1,21 @@
 <template>
-    <router-link class="button" to="/dough"> Go Back </router-link>
-    <router-link v-if="getToppings !== '-'" class="button" to="/">
-        Next Step
-    </router-link>
-    <button v-else class="button" disabled>Next Step</button>
+    <div class="buttons-container">
+        <div class="back-button">
+            <router-link class="button" to="/dough"> Go Back </router-link>
+        </div>
+        <div class="next-button">
+            <router-link
+                v-if="getToppings !== '-'"
+                class="button back-button"
+                to="/"
+            >
+                Next Step
+            </router-link>
+            <button v-else class="button next-button" disabled>
+                Next Step
+            </button>
+        </div>
+    </div>
 
     <p class="subtitle">Pick your <strong>toppings</strong>!</p>
 

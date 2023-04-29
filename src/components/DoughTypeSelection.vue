@@ -1,9 +1,21 @@
 <template>
-    <router-link class="button" to="/style"> Go Back </router-link>
-    <router-link v-if="getDoughType !== '-'" class="button" to="/toppings">
-        Next Step
-    </router-link>
-    <button v-else class="button" disabled>Next Step</button>
+    <div class="buttons-container">
+        <div class="back-button">
+            <router-link class="button" to="/style"> Go Back </router-link>
+        </div>
+        <div class="next-button">
+            <router-link
+                v-if="getDoughType !== '-'"
+                class="button back-button"
+                to="/toppings"
+            >
+                Next Step
+            </router-link>
+            <button v-else class="button next-button" disabled>
+                Next Step
+            </button>
+        </div>
+    </div>
 
     <p class="subtitle">What should be the type of <strong>dough</strong>?</p>
 
