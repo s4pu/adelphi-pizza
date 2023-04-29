@@ -1,13 +1,18 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
 import App from "./App.vue";
+import Home from "./components/HomeView.vue";
+import PizzaTypeSelection from "./components/PizzaTypeSelection.vue";
+import DoughTypeSelection from "./components/DoughTypeSelection.vue";
+import ToppingsSelection from "./components/ToppingsSelection.vue";
 import "./../node_modules/bulma/css/bulma.css";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const store = createStore({
     state() {
         return {
-            pizzaStyle: "foo",
-            doughType: "bar",
+            pizzaStyle: "-",
+            doughType: "-",
             toppings: [],
         };
     },
@@ -40,10 +45,37 @@ const store = createStore({
                 state.toppings
             );
         },
+        getPizzaStyle(state) {
+            return state.pizzaStyle;
+        },
+        getDoughType(state) {
+            return state.doughType;
+        },
+        getToppings(state) {
+            if (state.toppings.length > 0) {
+                return state.toppings.join(", ");
+            } else {
+                return "no toppings";
+            }
+        },
     },
+});
+
+const routes = [
+    { path: "/", component: Home },
+    { path: "/style", component: PizzaTypeSelection },
+    { path: "/dough", component: DoughTypeSelection },
+    { path: "/toppings", component: ToppingsSelection },
+];
+
+const router = createRouter({
+    // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+    history: createWebHashHistory(),
+    routes, // short for `routes: routes`
 });
 
 const app = createApp(App);
 
 app.use(store);
+app.use(router);
 app.mount("#app");
