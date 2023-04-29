@@ -1,5 +1,7 @@
 # about://pizza
 
+Deployment: https://clinquant-faun-25056c.netlify.app/
+
 ## Project setup
 
 ```
